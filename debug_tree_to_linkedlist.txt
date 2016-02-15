@@ -1,0 +1,775 @@
+Breakpoint 1, bstToList (curr=0x7fffffffe480, prev=0x7fffffffe3b0, head=0x7fffffffe3b8)
+    at BSTtoList.c:13
+13	  if (!curr) {
+(gdb) disp curr->val
+1: curr->val = 0
+(gdb) disp curr->left->val
+2: curr->left->val = 1
+(gdb) disp curr->right->val
+3: curr->right->val = 2
+(gdb) disp (*prev)->val
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+(gdb) disp (*prev)->left->val
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+(gdb) disp (*prev)->right->val
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+(gdb) disp (*head)->val
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+(gdb) s
+
+
+
+
+18	  bstToList(curr->left, prev, head);
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = 2
+2: curr->left->val = 1
+1: curr->val = 0
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x7fffffffe460, prev=0x7fffffffe3b0, head=0x7fffffffe3b8)
+    at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = 4
+2: curr->left->val = 3
+1: curr->val = 1
+(gdb) 
+18	  bstToList(curr->left, prev, head);
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = 4
+2: curr->left->val = 3
+1: curr->val = 1
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x7fffffffe420, prev=0x7fffffffe3b0, head=0x7fffffffe3b8)
+    at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 3
+(gdb) 
+18	  bstToList(curr->left, prev, head);
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 3
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+14	    return;
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+bstToList (curr=0x7fffffffe420, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:21
+21	  curr->left = *prev; // set curr->left to the prev pointer we saved below
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 3
+(gdb) 
+22	  if (*prev) {
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 3
+(gdb) 
+27	    *head = curr;
+7: (*head)->val = <error: Cannot access memory at address 0x0>
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 3
+(gdb) 
+30	  *prev = curr;
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x10>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x8>
+4: (*prev)->val = <error: Cannot access memory at address 0x0>
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 3
+(gdb) 
+34	  bstToList(curr->right, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x0>
+4: (*prev)->val = 3
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 3
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x0>
+4: (*prev)->val = 3
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+14	    return;
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x0>
+4: (*prev)->val = 3
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x0>
+4: (*prev)->val = 3
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x0>
+4: (*prev)->val = 3
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 3
+(gdb) 
+bstToList (curr=0x7fffffffe460, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:21
+21	  curr->left = *prev; // set curr->left to the prev pointer we saved below
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x0>
+4: (*prev)->val = 3
+3: curr->right->val = 4
+2: curr->left->val = 3
+1: curr->val = 1
+(gdb) 
+22	  if (*prev) {
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x0>
+4: (*prev)->val = 3
+3: curr->right->val = 4
+2: curr->left->val = 3
+1: curr->val = 1
+(gdb) 
+23	    (*prev)->right = curr; // set prev->right to our curr
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = <error: Cannot access memory at address 0x0>
+4: (*prev)->val = 3
+3: curr->right->val = 4
+2: curr->left->val = 3
+1: curr->val = 1
+(gdb) 
+30	  *prev = curr;
+7: (*head)->val = 3
+6: (*prev)->right->val = 1
+5: (*prev)->left->val = <error: Cannot access memory at address 0x0>
+4: (*prev)->val = 3
+3: curr->right->val = 4
+2: curr->left->val = 3
+1: curr->val = 1
+(gdb) 
+34	  bstToList(curr->right, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = 4
+5: (*prev)->left->val = 3
+4: (*prev)->val = 1
+3: curr->right->val = 4
+2: curr->left->val = 3
+1: curr->val = 1
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x7fffffffe400, prev=0x7fffffffe3b0, head=0x7fffffffe3b8)
+    at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = 4
+5: (*prev)->left->val = 3
+4: (*prev)->val = 1
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 4
+(gdb) 
+18	  bstToList(curr->left, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = 4
+5: (*prev)->left->val = 3
+4: (*prev)->val = 1
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 4
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = 4
+5: (*prev)->left->val = 3
+4: (*prev)->val = 1
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+14	    return;
+7: (*head)->val = 3
+6: (*prev)->right->val = 4
+5: (*prev)->left->val = 3
+4: (*prev)->val = 1
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = 4
+5: (*prev)->left->val = 3
+4: (*prev)->val = 1
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+bstToList (curr=0x7fffffffe400, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:21
+21	  curr->left = *prev; // set curr->left to the prev pointer we saved below
+7: (*head)->val = 3
+6: (*prev)->right->val = 4
+5: (*prev)->left->val = 3
+4: (*prev)->val = 1
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 4
+(gdb) 
+22	  if (*prev) {
+7: (*head)->val = 3
+6: (*prev)->right->val = 4
+5: (*prev)->left->val = 3
+4: (*prev)->val = 1
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 1
+1: curr->val = 4
+(gdb) 
+23	    (*prev)->right = curr; // set prev->right to our curr
+7: (*head)->val = 3
+6: (*prev)->right->val = 4
+5: (*prev)->left->val = 3
+4: (*prev)->val = 1
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 1
+1: curr->val = 4
+(gdb) 
+30	  *prev = curr;
+7: (*head)->val = 3
+6: (*prev)->right->val = 4
+5: (*prev)->left->val = 3
+4: (*prev)->val = 1
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 1
+1: curr->val = 4
+(gdb) 
+34	  bstToList(curr->right, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 1
+4: (*prev)->val = 4
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 1
+1: curr->val = 4
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 1
+4: (*prev)->val = 4
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+14	    return;
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 1
+4: (*prev)->val = 4
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 1
+4: (*prev)->val = 4
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 1
+4: (*prev)->val = 4
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 1
+1: curr->val = 4
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 1
+4: (*prev)->val = 4
+3: curr->right->val = 4
+2: curr->left->val = 3
+1: curr->val = 1
+(gdb) 
+bstToList (curr=0x7fffffffe480, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:21
+21	  curr->left = *prev; // set curr->left to the prev pointer we saved below
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 1
+4: (*prev)->val = 4
+3: curr->right->val = 2
+2: curr->left->val = 1
+1: curr->val = 0
+(gdb) 
+22	  if (*prev) {
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 1
+4: (*prev)->val = 4
+3: curr->right->val = 2
+2: curr->left->val = 4
+1: curr->val = 0
+(gdb) 
+23	    (*prev)->right = curr; // set prev->right to our curr
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 1
+4: (*prev)->val = 4
+3: curr->right->val = 2
+2: curr->left->val = 4
+1: curr->val = 0
+(gdb) 
+30	  *prev = curr;
+7: (*head)->val = 3
+6: (*prev)->right->val = 0
+5: (*prev)->left->val = 1
+4: (*prev)->val = 4
+3: curr->right->val = 2
+2: curr->left->val = 4
+1: curr->val = 0
+(gdb) 
+34	  bstToList(curr->right, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = 2
+2: curr->left->val = 4
+1: curr->val = 0
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x7fffffffe440, prev=0x7fffffffe3b0, head=0x7fffffffe3b8)
+    at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = 6
+2: curr->left->val = 5
+1: curr->val = 2
+(gdb) 
+18	  bstToList(curr->left, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = 6
+2: curr->left->val = 5
+1: curr->val = 2
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x7fffffffe3e0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8)
+    at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 5
+(gdb) 
+18	  bstToList(curr->left, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 5
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+14	    return;
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+bstToList (curr=0x7fffffffe3e0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:21
+21	  curr->left = *prev; // set curr->left to the prev pointer we saved below
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 5
+(gdb) 
+22	  if (*prev) {
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 0
+1: curr->val = 5
+(gdb) 
+23	    (*prev)->right = curr; // set prev->right to our curr
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 0
+1: curr->val = 5
+(gdb) 
+30	  *prev = curr;
+7: (*head)->val = 3
+6: (*prev)->right->val = 5
+5: (*prev)->left->val = 4
+4: (*prev)->val = 0
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 0
+1: curr->val = 5
+(gdb) 
+34	  bstToList(curr->right, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 0
+4: (*prev)->val = 5
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 0
+1: curr->val = 5
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 0
+4: (*prev)->val = 5
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+14	    return;
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 0
+4: (*prev)->val = 5
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 0
+4: (*prev)->val = 5
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 0
+4: (*prev)->val = 5
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 0
+1: curr->val = 5
+(gdb) 
+bstToList (curr=0x7fffffffe440, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:21
+21	  curr->left = *prev; // set curr->left to the prev pointer we saved below
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 0
+4: (*prev)->val = 5
+3: curr->right->val = 6
+2: curr->left->val = 5
+1: curr->val = 2
+(gdb) 
+22	  if (*prev) {
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 0
+4: (*prev)->val = 5
+3: curr->right->val = 6
+2: curr->left->val = 5
+1: curr->val = 2
+(gdb) 
+23	    (*prev)->right = curr; // set prev->right to our curr
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 0
+4: (*prev)->val = 5
+3: curr->right->val = 6
+2: curr->left->val = 5
+1: curr->val = 2
+(gdb) 
+30	  *prev = curr;
+7: (*head)->val = 3
+6: (*prev)->right->val = 2
+5: (*prev)->left->val = 0
+4: (*prev)->val = 5
+3: curr->right->val = 6
+2: curr->left->val = 5
+1: curr->val = 2
+(gdb) 
+34	  bstToList(curr->right, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = 6
+5: (*prev)->left->val = 5
+4: (*prev)->val = 2
+3: curr->right->val = 6
+2: curr->left->val = 5
+1: curr->val = 2
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x7fffffffe3c0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8)
+    at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = 6
+5: (*prev)->left->val = 5
+4: (*prev)->val = 2
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 6
+(gdb) 
+18	  bstToList(curr->left, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = 6
+5: (*prev)->left->val = 5
+4: (*prev)->val = 2
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 6
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = 6
+5: (*prev)->left->val = 5
+4: (*prev)->val = 2
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+14	    return;
+7: (*head)->val = 3
+6: (*prev)->right->val = 6
+5: (*prev)->left->val = 5
+4: (*prev)->val = 2
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = 6
+5: (*prev)->left->val = 5
+4: (*prev)->val = 2
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+bstToList (curr=0x7fffffffe3c0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:21
+21	  curr->left = *prev; // set curr->left to the prev pointer we saved below
+7: (*head)->val = 3
+6: (*prev)->right->val = 6
+5: (*prev)->left->val = 5
+4: (*prev)->val = 2
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = <error: Cannot access memory at address 0x0>
+1: curr->val = 6
+(gdb) 
+22	  if (*prev) {
+7: (*head)->val = 3
+6: (*prev)->right->val = 6
+5: (*prev)->left->val = 5
+4: (*prev)->val = 2
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 2
+1: curr->val = 6
+(gdb) 
+23	    (*prev)->right = curr; // set prev->right to our curr
+7: (*head)->val = 3
+6: (*prev)->right->val = 6
+5: (*prev)->left->val = 5
+4: (*prev)->val = 2
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 2
+1: curr->val = 6
+(gdb) 
+30	  *prev = curr;
+7: (*head)->val = 3
+6: (*prev)->right->val = 6
+5: (*prev)->left->val = 5
+4: (*prev)->val = 2
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 2
+1: curr->val = 6
+(gdb) 
+34	  bstToList(curr->right, prev, head);
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 2
+4: (*prev)->val = 6
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 2
+1: curr->val = 6
+(gdb) 
+
+Breakpoint 1, bstToList (curr=0x0, prev=0x7fffffffe3b0, head=0x7fffffffe3b8) at BSTtoList.c:13
+13	  if (!curr) {
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 2
+4: (*prev)->val = 6
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+14	    return;
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 2
+4: (*prev)->val = 6
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 2
+4: (*prev)->val = 6
+3: curr->right->val = <error: Cannot access memory at address 0x10>
+2: curr->left->val = <error: Cannot access memory at address 0x8>
+1: curr->val = <error: Cannot access memory at address 0x0>
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 2
+4: (*prev)->val = 6
+3: curr->right->val = <error: Cannot access memory at address 0x0>
+2: curr->left->val = 2
+1: curr->val = 6
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 2
+4: (*prev)->val = 6
+3: curr->right->val = 6
+2: curr->left->val = 5
+1: curr->val = 2
+(gdb) 
+35	}
+7: (*head)->val = 3
+6: (*prev)->right->val = <error: Cannot access memory at address 0x0>
+5: (*prev)->left->val = 2
+4: (*prev)->val = 6
+3: curr->right->val = 5
+2: curr->left->val = 4
+1: curr->val = 0
+(gdb) 
+main () at BSTtoList.c:73
