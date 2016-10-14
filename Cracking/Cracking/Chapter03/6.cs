@@ -15,9 +15,43 @@ namespace Cracking.Chapter03
 {
     class _6
     {
-        public static void sortStack<T>(Stack<T> stack)
+        public static void sortStack(Stack<int> stack)
         {
-            Stack<T> tempStack = new Stack<T>();
+            if (stack.Count == 0 || stack.Count == 1)
+            {
+                return;
+            }
+
+            Stack<int> tempStack = new Stack<int>();
+            
+            while (true)
+            {
+                int node = stack.Pop();
+
+                int count = stack.Count;
+                for (int i = 0; i < count; i++)
+                {
+                    tempStack.Push(stack.Pop());
+                }
+
+                // Potential source of bug (infinite loop) - may never stop if only use '<'
+                while (tempStack.Count > 0 && tempStack.Peek() <= node)
+                {
+                    stack.Push(tempStack.Pop());
+                }
+                stack.Push(node);
+
+                if (tempStack.Count == 0)
+                {
+                    break;
+                }
+
+                count = tempStack.Count;
+                for (int i = 0; i < count; i++)
+                {
+                    stack.Push(tempStack.Pop());
+                }
+            }
         }
     }
 
@@ -27,6 +61,28 @@ namespace Cracking.Chapter03
         [TestMethod]
         public void Test()
         {
+            var stack = new Stack<int>(new[] { 6, 5, 4, 3, 2, 1 });
+            var before = stack.ToArray();
+            _6.sortStack(stack);
+            var after = stack.ToArray();
+        }
+
+        [TestMethod]
+        public void Test1()
+        {
+            var stack = new Stack<int>(new[] { 6, 6, 6, 6, 5, 4, 3, 2, 1, 1, 1 });
+            var before = stack.ToArray();
+            _6.sortStack(stack);
+            var after = stack.ToArray();
+        }
+
+        [TestMethod]
+        public void Test2()
+        {
+            var stack = new Stack<int>(new[] { 6, 6, 8, 6, 6, 5, 4, 6, 3, 1, 2, 1, 1, 1 });
+            var before = stack.ToArray();
+            _6.sortStack(stack);
+            var after = stack.ToArray();
         }
     }
 }
