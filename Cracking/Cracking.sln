@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlip", "BitFlip\BitFlip.csproj", "{3B9611CB-E288-484D-B0AF-8DA91D1F1864}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cracking", "Cracking\Cracking.csproj", "{8837678E-FB82-4D1C-8282-2C8D8BCF1007}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3B9611CB-E288-484D-B0AF-8DA91D1F1864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B9611CB-E288-484D-B0AF-8DA91D1F1864}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B9611CB-E288-484D-B0AF-8DA91D1F1864}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B9611CB-E288-484D-B0AF-8DA91D1F1864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8837678E-FB82-4D1C-8282-2C8D8BCF1007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8837678E-FB82-4D1C-8282-2C8D8BCF1007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8837678E-FB82-4D1C-8282-2C8D8BCF1007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8837678E-FB82-4D1C-8282-2C8D8BCF1007}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

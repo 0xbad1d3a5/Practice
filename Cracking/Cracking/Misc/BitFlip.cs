@@ -7,12 +7,14 @@ using System.Collections.ObjectModel;
 
 namespace BitFlip
 {
-    public class FlipResult : IEquatable<FlipResult> {
+    public class FlipResult : IEquatable<FlipResult>
+    {
 
         public int flips { private set; get; }
         public String result { private set; get; }
 
-        public FlipResult (int flips, String result){
+        public FlipResult(int flips, String result)
+        {
             this.flips = flips;
             this.result = result;
         }
@@ -153,14 +155,14 @@ namespace BitFlip
     }
 
     [TestClass]
-    public class BitFlipTests
+    public class Tests_Misc_Bitflip
     {
         [TestMethod]
         public void TestMethod1()
         {
             while (true)
             {
-                var pattern = BitFlip.GetRandomPattern(16);
+                var pattern = BitFlip.GetRandomPattern(2);
                 var answer = BitFlip.SolveNaive(pattern);
                 var better = BitFlip.Solve(pattern);
                 CollectionAssert.Contains(new Collection<FlipResult>(answer), better,
