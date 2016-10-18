@@ -75,6 +75,7 @@
     <Compile Include="Chapter03\7.cs" />
     <Compile Include="Chapter03\Node.cs" />
     <Compile Include="Chapter11\1.cs" />
+    <Compile Include="Chapter11\2.cs" />
     <Compile Include="Misc\BitFlip.cs" />
     <Compile Include="Misc\Calendar.cs" />
     <Compile Include="Misc\Test.cs" />
