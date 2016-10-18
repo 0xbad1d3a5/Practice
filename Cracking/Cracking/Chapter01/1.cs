@@ -32,7 +32,7 @@ namespace Cracking.Chapter01
     }
 
     [TestClass]
-    public class Tests_1_1
+    public class Tests_01_1
     {
         [TestMethod]
         public void TestUniqueHashMap(){

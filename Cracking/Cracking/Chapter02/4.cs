@@ -61,7 +61,7 @@ namespace Cracking.Chapter02
     }
 
     [TestClass]
-    public class Tests_2_4
+    public class Tests_02_4
     {
         [TestMethod]
         public void Test()

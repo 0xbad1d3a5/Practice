@@ -39,7 +39,7 @@ namespace Cracking.Chapter03
     }
 
     [TestClass]
-    public class Tests_3_5
+    public class Tests_03_5
     {
         [TestMethod]
         public void Test()

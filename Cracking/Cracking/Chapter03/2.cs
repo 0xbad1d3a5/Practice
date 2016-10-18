@@ -120,7 +120,7 @@ namespace Cracking.Chapter03
     }
 
     [TestClass]
-    public class Tests_3_2
+    public class Tests_03_2
     {
         [TestMethod]
         public void Test()

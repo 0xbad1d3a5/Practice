@@ -59,7 +59,7 @@ namespace Cracking.Chapter01
     }
 
     [TestClass]
-    public class Tests_1_7
+    public class Tests_01_7
     {
         [TestMethod]
         public void Test(){

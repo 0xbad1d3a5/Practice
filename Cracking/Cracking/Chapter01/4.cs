@@ -70,7 +70,7 @@ namespace Cracking.Chapter01
     }
 
     [TestClass]
-    public class Tests_1_4
+    public class Tests_01_4
     {
 
         [TestMethod]

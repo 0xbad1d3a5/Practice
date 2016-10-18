@@ -159,7 +159,7 @@ namespace Cracking.Chapter02
     }
 
     [TestClass]
-    public class Tests_2_5
+    public class Tests_02_5
     {
         [TestMethod]
         public void TestReverse()

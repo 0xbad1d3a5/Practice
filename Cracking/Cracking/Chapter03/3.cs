@@ -115,7 +115,7 @@ namespace Cracking.Chapter03
     }
 
     [TestClass]
-    public class Tests_3_3
+    public class Tests_03_3
     {
         [TestMethod]
         public void Test1()
