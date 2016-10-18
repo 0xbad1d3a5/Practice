@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Cracking.Chapter11
 {
-    class _2
+    class _5
     {
     }
 
     [TestClass]
-    public class Tests_11_2
+    public class Tests_11_5
     {
         [TestMethod]
         public void Test()

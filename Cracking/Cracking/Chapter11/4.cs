@@ -12,7 +12,7 @@ namespace Cracking.Chapter11
     }
 
     [TestClass]
-    public class Tests_11_1
+    public class Tests_11_4
     {
         [TestMethod]
         public void Test() 
