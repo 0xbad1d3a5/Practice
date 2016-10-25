@@ -7,10 +7,6 @@ using System.Threading.Tasks;
 
 namespace Cracking.Misc
 {
-    class Test
-    {
-    }
-
     [TestClass]
     public class TestClass
     {

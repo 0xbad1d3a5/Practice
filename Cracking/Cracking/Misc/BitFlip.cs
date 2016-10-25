@@ -160,20 +160,18 @@ namespace BitFlip
         [TestMethod]
         public void TestMethod1()
         {
-            while (true)
-            {
-                var pattern = BitFlip.GetRandomPattern(2);
-                var answer = BitFlip.SolveNaive(pattern);
-                var better = BitFlip.Solve(pattern);
-                CollectionAssert.Contains(new Collection<FlipResult>(answer), better,
-                                          String.Format("{0}\n{1}\nMismatch", String.Join("|", answer.Select(x => x.result)), better));
-            }
+            var pattern = BitFlip.GetRandomPattern(2);
+            var answer = BitFlip.SolveNaive(pattern);
+            var better = BitFlip.Solve(pattern);
+            CollectionAssert.Contains(new Collection<FlipResult>(answer), better,
+                                        String.Format("{0}\n{1}\nMismatch", String.Join("|", answer.Select(x => x.result)), better));
         }
 
         [TestMethod]
         public void TestMethod2()
         {
-            for (int i = 0; i < int.MaxValue; i++)
+            //for (int i = 0; i < int.MaxValue; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 var pattern = Convert.ToString(i, 2).PadLeft(32, '0');
                 var answer = BitFlip.SolveNaive(pattern);

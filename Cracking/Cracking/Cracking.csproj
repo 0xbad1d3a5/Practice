@@ -80,6 +80,8 @@
     <Compile Include="Chapter11\4.cs" />
     <Compile Include="Chapter11\5.cs" />
     <Compile Include="Chapter11\6.cs" />
+    <Compile Include="Chapter11\7.cs" />
+    <Compile Include="Chapter11\8.cs" />
     <Compile Include="Misc\BitFlip.cs" />
     <Compile Include="Misc\Calendar.cs" />
     <Compile Include="Misc\MostSubstrings.cs" />

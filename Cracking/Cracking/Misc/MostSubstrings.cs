@@ -71,7 +71,7 @@ namespace Cracking.Misc
     }
 
     [TestClass]
-    public class Tests_11_5
+    public class Tests_Misc_MostSubstring
     {
         [TestMethod]
         public void Test()

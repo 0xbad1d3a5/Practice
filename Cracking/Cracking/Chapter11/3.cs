@@ -23,39 +23,27 @@ namespace Cracking.Chapter11
     {
         public static int binarySearchRotatedArray(int[] array, int begin, int end, int search)
         {
-            // found the element index, return
-            if (begin == end)
-            {
-                if (array[begin] == search)
-                {
-                    return begin;
-                }
-                else
-                {
-                    return -1;
-                }
-            }
-
             int mid = ((end - begin + 1) / 2) + begin;
 
+            // found the element index, return
+            if (array[mid] == search)
+            {
+                return mid;
+            }
+            // Since we make sure begin & end are always valid, we need to return here or we'll get a stackoverflow
+            if (begin == end)
+            {
+                return -1;
+            }
+
             // 3 possible cases:
-            // Case 1: If array @ begin, mid, end are the same values, then we can't really determine which side to do down, so we have to go down both.
+            // Case 1: If array@[begin, mid, end] are the same values, then we can't really determine which side to do down, so we have to go down both.
             if (array[begin] == array[mid] && array[mid] == array[end])
             {
-                int leftIndex = binarySearchRotatedArray(array, begin, mid - 1, search);
-                int rightIndex = binarySearchRotatedArray(array, mid, end, search);
-
-                if (leftIndex > rightIndex)
-                {
-                    return leftIndex;
-                }
-                else
-                {
-                    return rightIndex;
-                }
+                return searchSubarray(array, begin, end, search);
             }
             // Case 2: Array@[begin < mid]; left subarray is sorted
-            // If search falls between array@[begin,mid] recurse down array[begin, mid]
+            // If search falls between array@[begin, mid] recurse down array[begin, mid]
             // Otherwise, recurse down array[mid, end]
             else if (array[begin] <= array[mid])
             {
@@ -69,7 +57,7 @@ namespace Cracking.Chapter11
                 }
             }
             // Case 3: Array@[mid < end]; right subarray is sorted
-            // If search falls between array@[mid,end] recurse down array[mid,end]
+            // If search falls between array@[mid, end] recurse down array[mid, end]
             // Otherwise, recurse down array[begin, mid]
             else if (array[mid] <= array[end])
             {
@@ -82,9 +70,9 @@ namespace Cracking.Chapter11
                     return searchSubarray(array, begin, mid, search);
                 }
             }
+            // This should never happen
             else
             {
-                // This should never happen
                 throw new Exception();
             }
         }
