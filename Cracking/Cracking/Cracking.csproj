@@ -74,6 +74,15 @@
     <Compile Include="Chapter03\6.cs" />
     <Compile Include="Chapter03\7.cs" />
     <Compile Include="Chapter03\Node.cs" />
+    <Compile Include="Chapter04\1.cs" />
+    <Compile Include="Chapter04\2.cs" />
+    <Compile Include="Chapter04\3.cs" />
+    <Compile Include="Chapter04\4.cs" />
+    <Compile Include="Chapter04\5.cs" />
+    <Compile Include="Chapter04\6.cs" />
+    <Compile Include="Chapter04\7.cs" />
+    <Compile Include="Chapter04\8.cs" />
+    <Compile Include="Chapter04\9.cs" />
     <Compile Include="Chapter11\1.cs" />
     <Compile Include="Chapter11\2.cs" />
     <Compile Include="Chapter11\3.cs" />
@@ -89,7 +98,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Chapter04\" />
     <Folder Include="Chapter05\" />
     <Folder Include="Chapter06\" />
     <Folder Include="Chapter07\" />

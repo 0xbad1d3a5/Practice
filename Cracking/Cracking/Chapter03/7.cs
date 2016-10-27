@@ -12,7 +12,7 @@ using System.Threading.Tasks;
  * a cat (and will receive the oldest animal of that type). They cannot select which
  * specific animal they would like. Create the data structures to maintain this system
  * and implement operations such as enqueue, dequeueAny, dequeueDog and
- * dequeueCat.You may use the built-in LinkedList data structure.
+ * dequeueCat. You may use the built-in LinkedList data structure.
  */
 namespace Cracking.Chapter03
 {

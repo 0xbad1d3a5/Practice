@@ -37,16 +37,14 @@ namespace Cracking.Chapter11
             {
                 return new int[] { rowPos, colPos };
             }
-            if (matrix[rowPos, colPos] > value)
+            else if (matrix[rowPos, colPos] > value)
             {
                 return findValueInSortedMatrix(matrix, rowPos, colPos - 1, value);
             }
-            if (matrix[rowPos, colPos] < value)
+            else
             {
                 return findValueInSortedMatrix(matrix, rowPos + 1, colPos, value);
             }
-
-            throw new NumberNotFound();
         }
     }
 
