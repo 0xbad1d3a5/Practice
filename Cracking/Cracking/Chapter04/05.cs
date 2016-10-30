@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Implement a function to check if a binary tree is a binary search tree.
+ */
 namespace Cracking.Chapter04
 {
     class _05

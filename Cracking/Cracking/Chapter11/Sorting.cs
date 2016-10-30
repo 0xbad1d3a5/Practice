@@ -5,18 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/*
- * Given a directed graph, design an algorithm to find out whether there is a route
- * between two nodes.
- */
-namespace Cracking.Chapter04
+namespace Cracking.Chapter11
 {
-    class _02
+    class Sorting
     {
     }
 
     [TestClass]
-    public class Tests_04_02
+    public class Tests_11_Sorting
     {
         [TestMethod]
         public void Test()

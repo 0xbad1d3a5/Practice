@@ -83,6 +83,8 @@
     <Compile Include="Chapter04\07.cs" />
     <Compile Include="Chapter04\08.cs" />
     <Compile Include="Chapter04\09.cs" />
+    <Compile Include="Chapter04\GraphNode.cs" />
+    <Compile Include="Chapter04\TreeNode.cs" />
     <Compile Include="Chapter11\01.cs" />
     <Compile Include="Chapter11\02.cs" />
     <Compile Include="Chapter11\03.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Chapter11\06.cs" />
     <Compile Include="Chapter11\07.cs" />
     <Compile Include="Chapter11\08.cs" />
+    <Compile Include="Chapter11\Sorting.cs" />
     <Compile Include="Misc\BitFlip.cs" />
     <Compile Include="Misc\Calendar.cs" />
     <Compile Include="Misc\MostSubstrings.cs" />

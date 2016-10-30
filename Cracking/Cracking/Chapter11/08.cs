@@ -75,17 +75,99 @@ namespace Cracking.Chapter11
     /*
      * Use a binary search tree to track and then in-order traversal to find rank.
      * Provided the tree is balanced (would depend on the stream), we can achieve O(log(N)) for both insert and rank.
+     * Balance of the tree in this case would depend on the input from the stream itself. Could potentially be O(N)
+     * worst-case for insertions.
      */
     class TreeTracker
     {
+        Node node;
 
+        public void track(int i)
+        {
+            Node newNode = new Node(i);
+            if (node == null)
+            {
+                node = newNode;
+            }
+            else
+            {
+                node.insert(newNode);
+            }
+        }
+
+        public int getRankOfNumber(int i)
+        {
+            return node.getRank(i, 0);
+        }
+    }
+
+    class Node
+    {
+        private Node left;
+        private Node right;
+        private int value;
+
+        /*
+         * Rank is just the in-order traversal of the tree, so we can save time by storing the size of the left subtree
+         * to compute the in-order position of a node.
+         */
+        private int leftTreeSize;
+
+        public Node(int n)
+        {
+            value = n;
+            leftTreeSize = 0;
+        }
+
+        public void insert(Node node)
+        {
+            if (node.value <= value)
+            {
+                if (left == null)
+                {
+                    left = node;
+                }
+                else
+                {
+                    left.insert(node);
+                }
+                leftTreeSize++;
+            }
+            else
+            {
+                if (right == null)
+                {
+                    right = node;
+                }
+                else
+                {
+                    right.insert(node);
+                }
+            }
+        }
+
+        public int getRank(int i, int leftSize)
+        {
+            if (i == value)
+            {
+                return leftTreeSize + leftSize;
+            }
+            else if (i < value)
+            {
+                return left.getRank(i, leftSize);
+            }
+            else
+            {
+                return right.getRank(i, leftSize + leftTreeSize + 1);
+            }
+        }
     }
 
     [TestClass]
     public class Tests_11_08
     {
         [TestMethod]
-        public void Test()
+        public void TestDictionary()
         {
             DictionaryTracker dt = new DictionaryTracker();
             
@@ -106,6 +188,30 @@ namespace Cracking.Chapter11
             Assert.AreEqual(0, dt.getRankOfNumber(1));
             Assert.AreEqual(1, dt.getRankOfNumber(3));
             Assert.AreEqual(3, dt.getRankOfNumber(4));
+        }
+
+        [TestMethod]
+        public void TestTree()
+        {
+            TreeTracker tt = new TreeTracker();
+
+            tt.track(5);
+            Assert.AreEqual(0, tt.getRankOfNumber(5));
+
+            tt.track(1);
+            tt.track(4);
+            tt.track(4);
+            Assert.AreEqual(2, tt.getRankOfNumber(4));
+
+            tt.track(5);
+            tt.track(9);
+            tt.track(7);
+            tt.track(13);
+            tt.track(3);
+
+            Assert.AreEqual(0, tt.getRankOfNumber(1));
+            Assert.AreEqual(1, tt.getRankOfNumber(3));
+            Assert.AreEqual(3, tt.getRankOfNumber(4));
         }
     }
 }
