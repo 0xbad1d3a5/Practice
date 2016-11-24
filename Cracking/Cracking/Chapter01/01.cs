@@ -13,6 +13,10 @@ namespace Cracking.Chapter01
 {
     class _01
     {
+        /*
+         * Simple: Use a dictionary to keep track of encountered characters
+         * O(n) runtime and O(k) space, where k is number of unique characters
+         */
         public static bool isUniqueHashMap(string str)
         {
             Dictionary<char, bool> dict = new Dictionary<char, bool>();

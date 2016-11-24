@@ -13,6 +13,21 @@ namespace Cracking.Chapter04
 {
     class _03
     {
+        public TreeNode arrayToBst(int[] arr, int begin, int end)
+        {
+            if (end < begin)
+            {
+                return null;
+            }
+
+            int mid = (end - begin) / 2 + begin;
+            TreeNode parent = new TreeNode(arr[mid]);
+
+            parent.Left = arrayToBst(arr, begin, mid - 1);
+            parent.Right = arrayToBst(arr, mid + 1, end);
+
+            return parent;
+        }
     }
 
     [TestClass]
@@ -21,7 +36,7 @@ namespace Cracking.Chapter04
         [TestMethod]
         public void Test()
         {
-
+            // https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
         }
     }
 }
