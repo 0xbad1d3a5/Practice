@@ -17,6 +17,51 @@ namespace Cracking.Chapter04
 {
     class _08
     {
+        // https://leetcode.com/problems/same-tree/
+        private static bool AreEqualTrees(TreeNode x, TreeNode y)
+        {
+            if (x == null && y == null)
+            {
+                return true;
+            }
+            if (x == null || y == null)
+            {
+                return false;
+            }
+            if (x.Value != y.Value)
+            {
+                return false;
+            }
+            return AreEqualTrees(x.Left, y.Left) && AreEqualTrees(x.Right, y.Right);
+        }
+
+        private static bool SubTree(TreeNode t1, TreeNode t2)
+        {
+            if (t1 == null)
+            {
+                return false;
+            }
+
+            if (t1.Value == t2.Value)
+            {
+                if (AreEqualTrees(t1, t2))
+                {
+                    return true;
+                }
+            }
+
+            return SubTree(t1.Left, t2) || SubTree(t1.Right, t2);
+        }
+
+        public static bool ContainsTree(TreeNode t1, TreeNode t2)
+        {
+            // null tree is always a subtree
+            if (t2 == null)
+            {
+                return true;
+            }
+            return SubTree(t1, t2);
+        }
     }
 
     [TestClass]
