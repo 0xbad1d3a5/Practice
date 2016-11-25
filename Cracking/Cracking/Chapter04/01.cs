@@ -19,15 +19,15 @@ namespace Cracking.Chapter04
          * 
          * Calculate height recursively on the tree and its subtrees and make sure they do not differ by more than 1.
          */
-        public static int isBalanced(TreeNode node)
+        public static int isBalanced(TreeNode root)
         {
-            if (node == null)
+            if (root == null)
             {
                 return 0;
             }
 
-            int left = 1 + isBalanced(node.Left);
-            int right = 1 + isBalanced(node.Right);
+            int left = 1 + isBalanced(root.Left);
+            int right = 1 + isBalanced(root.Right);
 
             if (left == 0 || right == 0)
             {
@@ -48,6 +48,12 @@ namespace Cracking.Chapter04
     {
         [TestMethod]
         public void Test()
+        {
+            // https://leetcode.com/problems/balanced-binary-tree/
+        }
+
+        [TestMethod]
+        public void Test1()
         {
             TreeNode t1 = new TreeNode(1);
             TreeNode t2 = new TreeNode(2);
@@ -70,7 +76,7 @@ namespace Cracking.Chapter04
         }
 
         [TestMethod]
-        public void Test1()
+        public void Test2()
         {
             TreeNode t1 = new TreeNode(1);
             TreeNode t2 = new TreeNode(2);

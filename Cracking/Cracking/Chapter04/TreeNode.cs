@@ -10,6 +10,7 @@ namespace Cracking.Chapter04
     {
         public TreeNode Left { get; set; }
         public TreeNode Right { get; set; }
+        public TreeNode Parent { get; set; }
         public int Value { get; private set; }
 
         public TreeNode(int value)

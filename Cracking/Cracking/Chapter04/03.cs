@@ -13,7 +13,12 @@ namespace Cracking.Chapter04
 {
     class _03
     {
-        public TreeNode arrayToBst(int[] arr, int begin, int end)
+        public static TreeNode arrayToBst(int[] arr)
+        {
+            return arrayToBstHelper(arr, 0, arr.Length - 1, null);
+        }
+
+        private static TreeNode arrayToBstHelper(int[] arr, int begin, int end, TreeNode parent)
         {
             if (end < begin)
             {
@@ -21,12 +26,13 @@ namespace Cracking.Chapter04
             }
 
             int mid = (end - begin) / 2 + begin;
-            TreeNode parent = new TreeNode(arr[mid]);
+            TreeNode newNode = new TreeNode(arr[mid]);
 
-            parent.Left = arrayToBst(arr, begin, mid - 1);
-            parent.Right = arrayToBst(arr, mid + 1, end);
+            newNode.Parent = parent;
+            newNode.Left = arrayToBstHelper(arr, begin, mid - 1, newNode);
+            newNode.Right = arrayToBstHelper(arr, mid + 1, end, newNode);
 
-            return parent;
+            return newNode;
         }
     }
 
