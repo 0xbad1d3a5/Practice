@@ -26,7 +26,7 @@ namespace Cracking.Chapter04
      * 2. Found a node in right subtree, with none left, recurse down right (provided current node is not a searched for node)
      * 3. Found in both subtrees, then the current node is the first common ancestor
      * 4. Current node is a node we are searching for, then search children of the current node to make sure we have a second node
-     *    - just to verify we actually have a valid problem
+     *    - Search for other again to verify we actually have a valid problem
      *    - This step should be before step 1 & 2
      */
     class _07

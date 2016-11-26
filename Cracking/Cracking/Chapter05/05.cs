@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,15 @@ namespace Cracking.Chapter05
 {
     class _05
     {
+    }
+
+    [TestClass]
+    public class Tests_05_05
+    {
+        [TestMethod]
+        public void Test()
+        {
+
+        }
     }
 }
