@@ -14,6 +14,29 @@ namespace Cracking.Chapter05
 {
     class _02
     {
+        public static String toBinaryRep(StringBuilder rep, double value)
+        {
+            if (value == 0)
+            {
+                return rep.ToString();
+            }
+            if (rep.Length > 34)
+            {
+                return "Error";
+            }
+
+            bool valGreaterEqualOne = value * 2 >= 1;
+            if (valGreaterEqualOne)
+            {
+                rep.Append("1");
+            }
+            else
+            {
+                rep.Append("0");
+            }
+
+            return toBinaryRep(rep, valGreaterEqualOne ? value * 2 - 1 : value * 2);
+        }
     }
 
     [TestClass]
@@ -22,7 +45,10 @@ namespace Cracking.Chapter05
         [TestMethod]
         public void Test()
         {
-
+            Assert.AreEqual("0.11", _02.toBinaryRep(new StringBuilder("0."), 0.75));
+            Assert.AreEqual("0.", _02.toBinaryRep(new StringBuilder("0."), 0));
+            Assert.AreEqual("0.011011", _02.toBinaryRep(new StringBuilder("0."), 0.421875));
+            Assert.AreEqual("Error", _02.toBinaryRep(new StringBuilder("0."), 0.1));
         }
     }
 }
