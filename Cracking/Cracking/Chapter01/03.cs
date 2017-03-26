@@ -12,11 +12,15 @@ namespace Cracking.Chapter01
 {
     class _03
     {
-        // IMPORTANT QUESTIONS TO ASK:
-        // 
-        // What character encoding?
-        // Is it case sensitive?
-        // Does whitespace matter?
+        /* IMPORTANT QUESTIONS TO ASK:
+         * 
+         * What character encoding?
+         * Is it case sensitive?
+         * Does whitespace matter?
+         * 
+         * This solution simply builds two dictionaries then checks if the dictionaries
+         * are equal.
+         */
         public static bool ArePermutation(string str1, string str2)
         {
             Dictionary<char, int> d1 = BuildDictionary(str1);

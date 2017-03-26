@@ -11,7 +11,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
  */
 namespace Cracking.Chapter01
 {
-    // https://leetcode.com/problems/reverse-string/
+    /* https://leetcode.com/problems/reverse-string/
+     * 
+     * Fairly simple reverse implementation. We implement a swap() function that swaps two
+     * character pointers. Then we have a reverseString() function where we first move the
+     * pointer to the very end, and then as long as the two pointers have no intersected yet
+     * as they move towards the center, swapping characters, we continuously swap the
+     * characters while incrementing / decrementing the pointers.
+     * 
+     * If this was in a language were one does not have direct pointer access, it would simply
+     * be a character array and the swap function would take 3 parameters: array, pos1, pos2.
+     */
     class _02
     {
         // static void swap(char* l, char* r);

@@ -33,6 +33,29 @@ namespace Cracking.Chapter01
             }
             return true;
         }
+
+        /*
+         * Keep track of a subsection of the string starting from the beginning of the string.
+         * When you move to the next character, scan the subsection of the string, if you find
+         * the character again, there is a duplicate.
+         * 
+         * This is a O(n^2) algorithm.
+         */
+        public static bool isUniqueScanPrev(string str)
+        {
+            for (int i = 0; i < str.Length; i++)
+            {
+                for (int sub = 0; sub < i; sub++)
+                {
+                    if (str[sub] == str[i])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
     }
 
     [TestClass]
@@ -43,6 +66,14 @@ namespace Cracking.Chapter01
             Assert.IsTrue(_01.isUniqueHashMap("abc"));
             Assert.IsTrue(_01.isUniqueHashMap("あabc"));
             Assert.IsFalse(_01.isUniqueHashMap("aabc"));
+        }
+
+        [TestMethod]
+        public void TestUniqueScanPrev()
+        {
+            Assert.IsTrue(_01.isUniqueScanPrev("abc"));
+            Assert.IsTrue(_01.isUniqueScanPrev("あabc"));
+            Assert.IsFalse(_01.isUniqueScanPrev("aabc"));
         }
     }
 }

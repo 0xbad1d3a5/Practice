@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * Find the most frequent occurences of a substring 
+ * Find the most frequent occurrences of a substring 
  */
 namespace Cracking.Misc
 {
