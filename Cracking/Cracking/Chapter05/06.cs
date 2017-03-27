@@ -12,8 +12,22 @@ using System.Threading.Tasks;
  */
 namespace Cracking.Chapter05
 {
+    /*
+     * 
+     */
     class _06
     {
+        /*
+         * When the left operand of the >> operator is of an unsigned integral type,
+         * the operator performs a logical shift right wherein high-order empty bit
+         * positions are always set to zero. 
+         */
+        public static uint swapEvenAndOddBits(uint n)
+        {
+            uint oddToEven = (n & 0x55555555) << 1;
+            uint evenToOdd = (n & 0xAAAAAAAA) >> 1; // Must be logical right shift
+            return oddToEven | evenToOdd;
+        }
     }
 
     [TestClass]
@@ -22,7 +36,11 @@ namespace Cracking.Chapter05
         [TestMethod]
         public void Test()
         {
-
+            Assert.AreEqual(Convert.ToUInt32(2), _06.swapEvenAndOddBits(1));
+            Assert.AreEqual(Convert.ToUInt32(1), _06.swapEvenAndOddBits(2));
+            Assert.AreEqual(Convert.ToUInt32(10), _06.swapEvenAndOddBits(5));
+            Assert.AreEqual(Convert.ToUInt32(5), _06.swapEvenAndOddBits(10));
+            Assert.AreEqual(Convert.ToUInt32(4), _06.swapEvenAndOddBits(8));
         }
     }
 }

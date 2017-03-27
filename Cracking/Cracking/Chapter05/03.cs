@@ -15,6 +15,9 @@ namespace Cracking.Chapter05
     class _03
     {
 
+        /*
+         * Naive solution: increment until you find another integer with the same number of one bits.
+         */
         public static uint naiveNextLargestNumberSameBits(uint val)
         {
             int numBits = countNumberOfOnes(val);
@@ -159,6 +162,10 @@ namespace Cracking.Chapter05
             throw new ArgumentOutOfRangeException();
         }
 
+        /*
+         * Note: Don't have to swap bits if they are the same! If the bits have been determined to not be the same,
+         * then you can build the bitmask and then XOR to swap.
+         */ 
         private static uint swapTwoBits(uint num, int bitOnePos, int bitTwoPos)
         {
             if (((num >> bitOnePos) & 1) != ((num >> bitTwoPos) & 1))

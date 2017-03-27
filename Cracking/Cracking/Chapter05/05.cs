@@ -15,8 +15,30 @@ using System.Threading.Tasks;
  */
 namespace Cracking.Chapter05
 {
+    /*
+     * 1) XOR integer A with integer B
+     * 2) Count the number of 1's in the result
+     */
     class _05
     {
+        public static int countBits(uint num)
+        {
+            int count = 0;
+            for (int i = 0; i < 32; i++)
+            {
+                if ((num & 1) == 1)
+                {
+                    count++;
+                }
+                num = num >> 1;
+            }
+            return count;
+        }
+
+        public static int numBitsDifference(uint A, uint B)
+        {
+            return countBits(A ^ B);
+        }
     }
 
     [TestClass]
@@ -25,7 +47,8 @@ namespace Cracking.Chapter05
         [TestMethod]
         public void Test()
         {
-
+            Assert.AreEqual(2, _05.numBitsDifference(1, 2));
+            Assert.AreEqual(0, _05.numBitsDifference(1, 1));
         }
     }
 }
