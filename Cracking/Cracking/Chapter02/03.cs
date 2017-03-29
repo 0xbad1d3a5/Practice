@@ -18,6 +18,7 @@ namespace Cracking.Chapter02
     {
         public static void DeleteNodeGivenNode(Node node)
         {
+            // Question is not possible if node is null or the last node in the list
             if (node == null || node.next == null)
             {
                 throw new ElementOutOfBoundsException();
