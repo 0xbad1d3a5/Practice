@@ -27,6 +27,31 @@ namespace Cracking.Chapter02
             this.value = value;
         }
 
+        public Node(int[] values)
+        {
+            if (values.Length == 0)
+            {
+                return;
+            }
+
+            bool first = true;
+            Node ptr = null;
+            foreach (int num in values)
+            {
+                if (first)
+                {
+                    value = num;
+                    ptr = this;
+                    first = false;
+                    continue;
+                }
+
+                Node newNode = new Node(num);
+                ptr.next = newNode;
+                ptr = ptr.next;
+            }
+        }
+
         public void PrintTail()
         {
             Node ptr = this;

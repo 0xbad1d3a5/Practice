@@ -15,7 +15,11 @@ namespace Cracking.Chapter01
 {
     class _05
     {
-        // Does not handle UTF-16 surrogate pairs
+        /* Does not handle UTF-16 surrogate pairs
+         * 
+         * Algorithm is fairly straightforward. Keep counting until you hit a different
+         * character, where then you add the previous character and counts.
+         */
         public static string CompressString(string str)
         {
             if (str == null || str == "")

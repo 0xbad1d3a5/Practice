@@ -62,6 +62,9 @@ namespace Cracking.Chapter05
             return count;
         }
 
+        /*
+         * Find the first group of one's from the least significant bits and carry the most significant bit of that group.
+         */
         public static uint nextLargestNumberSameBits(uint num)
         {
             uint mask = 1;
@@ -118,6 +121,11 @@ namespace Cracking.Chapter05
             return swapTwoBits(num, zeroPos, posOfFirstOneFromZero(num, zeroPos));
         }
 
+        /*
+         * 1) Find the first group of ones from the first zero
+         * 2) Un-carry the least significant bit of that group 
+         * 3) Move any ones of significant bits less than the first froup of ones and move it to the end (least significant)
+         */
         public static uint nextSmallestNumberSameBits(uint num)
         {
             int zeroPos = posOfFirstZero(num);

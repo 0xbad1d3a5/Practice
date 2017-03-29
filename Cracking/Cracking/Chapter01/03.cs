@@ -20,6 +20,8 @@ namespace Cracking.Chapter01
          * 
          * This solution simply builds two dictionaries then checks if the dictionaries
          * are equal.
+         * 
+         * Alternative solution: sort the strings and check if they are equal.
          */
         public static bool ArePermutation(string str1, string str2)
         {

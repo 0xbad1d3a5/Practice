@@ -27,12 +27,12 @@ namespace Cracking.Chapter01
             int offset = 0; // Careful here, we need this variable (and can't do "end - i") because the end also has to one-by-one meet start
             for (int i = start; i < end; i++)
             {
-                int temp = matrix[start, i];
-                matrix[start, i] = matrix[end - offset, start];
-                matrix[end - offset, start] = matrix[end, end - offset];
-                matrix[end, end - offset] = matrix[i, end];
-                matrix[i, end] = temp;
-                offset++;
+                int temp = matrix[start, i]; // Save top-left corner
+                matrix[start, i] = matrix[end - offset, start]; // Move bottom-left to top-left
+                matrix[end - offset, start] = matrix[end, end - offset]; // Move bottom-right to bottom-left
+                matrix[end, end - offset] = matrix[i, end]; // Move top-right to bottom-right
+                matrix[i, end] = temp; // Set top right to saved top-left
+                offset++; // Increment to move onto next position
             }
 
             RotateMatrix(matrix, start + 1, end);

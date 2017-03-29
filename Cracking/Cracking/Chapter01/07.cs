@@ -13,12 +13,21 @@ namespace Cracking.Chapter01
 {
     class _07
     {
+        /*
+         * Note that you need at least two passes for this problem. If you attempt to do it in only one pass,
+         * it will not work as future visits to a position that was previously set to zero will unintentially
+         * set cells that should not be 0 to 0.
+         * 
+         * Solution is thus:
+         * 1) Loop through the matrix, keep track of what columns and rows should be zero-ized in two separate arrays
+         * 2) Loop through the matrix again, this time setting matrix[x, y] to be 0 if rows[x] == 0 || column[y] == 0
+         */
         public static void SetMatrixRowColZero(int[,] matrix)
         {
             int[] rows = new int[matrix.GetLength(0)];
             int[] cols = new int[matrix.GetLength(1)];
 
-            // Loop through the matrix and find where we have zeros
+            // Loop through the matrix and find which columns and rows have zeros
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)

@@ -22,8 +22,10 @@ namespace Cracking.Chapter01
     {
         /*
          * Instead of starting from the beginning of the string, move the pointer to the
-         * the of the character array and start copying from the end of the string, replacing
+         * end of the character array and start copying from the end of the string, replacing
          * ' ' with '%20' when you encounter a space.
+         * 
+         * Note: this particular implementation does not allow spaces at the end
          */
         public static char[] ReplaceSpacesWithPercentTwenty(char[] charArray)
         {

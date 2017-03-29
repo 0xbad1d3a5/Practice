@@ -14,6 +14,13 @@ namespace Cracking.Chapter02
 {
     class _01
     {
+        /*
+         * Very similar to detecting duplicates in a string without extra space.
+         * Requires two pointers. Everytime you increment ptr1, set ptr2 to the
+         * head of the list and scan up till ptr1 that the elements before ptr1
+         * are not ptr1 to guarantee that the new ptr1 is unique. If it is not
+         * unique, remove it from the list.
+         */
         public static void RemoveDuplicates(Node head)
         {
             Node ptr = head.next;
@@ -23,7 +30,7 @@ namespace Cracking.Chapter02
                 Node search = head;
                 while (search != ptr)
                 {
-                    // found something, remove value from list
+                    // found something, remove value from list by skipping the current pointer
                     if (search.value == ptr.value)
                     {
                         while (search.next != ptr)
