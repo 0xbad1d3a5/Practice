@@ -62,5 +62,28 @@ namespace Cracking.Chapter02
             }
             System.Diagnostics.Debug.WriteLine("");
         }
+
+        public bool Equal(Node other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            Node p1 = this;
+            Node p2 = other;
+
+            while (p1 != null)
+            {
+                if (p1.value != p2.value)
+                {
+                    return false;
+                }
+                p1 = p1.next;
+                p2 = p2.next;
+            }
+
+            return p2 == null;
+        }
     }
 }

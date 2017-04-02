@@ -18,6 +18,13 @@ namespace Cracking.Chapter04
             return arrayToBstHelper(arr, 0, arr.Length - 1, null);
         }
 
+        /*
+         * The idea of this algorithm is simple. Divide the array into 3 parts:
+         * 
+         * 1) Left part of the array, recursively build out the subtree
+         * 2) Middle single element, which becomes the node
+         * 3) Right part of the array, recursively build out the subtree
+         */
         private static TreeNode arrayToBstHelper(int[] arr, int begin, int end, TreeNode parent)
         {
             if (end < begin)

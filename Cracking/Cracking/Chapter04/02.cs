@@ -11,6 +11,15 @@ using System.Threading.Tasks;
  */
 namespace Cracking.Chapter04
 {
+    /* This problem can simply be solved by one of the graph traversal algorithms.
+     * 
+     * Do note that both solutions are using a hash table to store whether a node has
+     * been visited or not so we don't change the underlying data structure in case
+     * of parallelism.
+     * 
+     * Also, DO NOT forget some form of visited; otherwise the algorithm will run
+     * infinitely if the graph has a loop (which many graphs often have)
+     */
     class _02
     {
         public static bool hasPathDfs(GraphNode n, GraphNode search, HashSet<GraphNode> visited)

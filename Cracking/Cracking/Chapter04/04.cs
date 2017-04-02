@@ -19,6 +19,11 @@ namespace Cracking.Chapter04
      */
     class _04
     {
+        /*
+         * As mentioned, this is basically BFS, since a BFS will naturally give tree in depth-order. Use two queues to keep track of the next
+         * depth (probably possible to also do this with one queue). As you dequeue add it to a results array for that level, which itself
+         * gets added to a array of arrays for the final result.
+         */
         public static IList<IList<int>> treeToLevelOrder(TreeNode root)
         {
             IList<IList<int>> resultLists = new List<IList<int>>();

@@ -29,16 +29,21 @@ namespace Cracking.Chapter04
             int left = 1 + isBalanced(root.Left);
             int right = 1 + isBalanced(root.Right);
 
+            /* Because we return -1 in the case that |left - right| > 1, the only case left or right can be 0 is if
+             * we already failed in a prior recursive call - therefore continue returning -1 to indicate failure.
+             */
             if (left == 0 || right == 0)
             {
                 return -1;
             }
 
+            // Ensure that |left - right| do not differ by more than 1
             if (!(Math.Abs(left - right) <= 1))
             {
                 return -1;
             }
 
+            // Return the larger side, or just left if they're the same (as it doesn't matter)
             return left > right ? left : right;
         }
     }

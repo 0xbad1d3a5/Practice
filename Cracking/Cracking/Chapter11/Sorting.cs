@@ -138,13 +138,18 @@ namespace Cracking.Chapter11
         }
 
         /*
-         * Quicksort: Key point of the quicksort algorithm is the paritioning - partition the array around a pivot, one side greater and one side smaller
+         * Quicksort: Key point of the quicksort algorithm is the paritioning - partition the array around a pivot, one side greater and one side smaller.
+         * 
+         * Note that you actually need O(n) space here due to information stored on the stack.
          */
         public static void quickSort(int[] array, int leftPos, int rightPos)
         {
+            // Base case: No elements or only one element, no need to swap anything
             if (rightPos - leftPos <= 0){
                 return;
             }
+
+            // Base case: Array sub-section was only 2 elements, swap if needed
             if (rightPos - leftPos == 1)
             {
                 if (array[leftPos] > array[rightPos])
@@ -159,15 +164,20 @@ namespace Cracking.Chapter11
             int right = rightPos;
 
             /*
-             * 3 cases:
+             * Partition part, may also be written as its own function.
+             * 
+             * 3 cases per loop:
              * 1) Move the left pointer forward
              * 2) Move the right pointer backwards
              * 3) If the left side is greater than or equal to the right, then swap them to partition the array
              */
             while (left < right)
             {
-                // Careful, this must be before the other two cases - otherwise we can end up with i.e., left == 4 && right == 2
-                // Which is bad, because left & right should never be more than 1 apart for the stopping condition
+                /* Careful, this must be before the other two cases - otherwise we can end up with i.e., left == 4 && right == 2
+                 * Which is bad, because left & right should never be more than 1 apart for the stopping condition
+                 *
+                 * Or just use a if/else-if chain
+                 */
                 if (array[left] >= pivot && array[right] < pivot)
                 {
                     swap(array, left, right);
@@ -184,6 +194,10 @@ namespace Cracking.Chapter11
                 }
             }
 
+            /* Move the pivot element (which hasn't been touched until now) to its "proper" position, which in this case,
+             * is array[right]. Sorting in the opposite order may change this to array[left] as we need to make sure the
+             * element is in the proper position in the case the left & right pointers cross positions.
+             */ 
             if (array[leftPos] > array[right])
             {
                 swap(array, leftPos, right);

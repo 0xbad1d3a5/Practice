@@ -14,6 +14,15 @@ namespace Cracking.Chapter04
 {
     class _09
     {
+        /*
+         * The concept is to recursively build all the possible node paths as you traverse the tree.
+         * Everytime you encounter a new node, you add it to the path and then evaluate the current
+         * list of paths for a matching sum.
+         * 
+         * Note that one key point to this algorithm is that you don't want to always search from the
+         * root node! You WILL miss the paths in the middle of the tree as you will always be evaluating
+         * the same sub-paths rather than evaluating new sub-paths.
+         */
         public static IList<IList<int>> FindPathsWithSum(TreeNode root, List<int> path, int search)
         {
             if (root == null)
@@ -21,12 +30,13 @@ namespace Cracking.Chapter04
                 return new List<IList<int>>();
             }
 
+            // Add current node to path and then evaluate the current path for a matching sum
             path.Add(root.Value);
             List<IList<int>> results = new List<IList<int>>();
-
             for (int i = path.Count - 1; i >= 0; i--)
             {
-                IList<int> currPath = path.GetRange(i, path.Count - i);
+                // Some clever LINQ that just adds up the current path evaluation 
+                IList<int> currPath = path.GetRange(i, path.Count - i); // Note how we are starting from the end of the path
                 int sum = currPath.Aggregate((total, next) => { return total + next; });
                 if (sum == search)
                 {

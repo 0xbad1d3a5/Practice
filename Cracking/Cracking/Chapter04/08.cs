@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 /*
  * You have two very large binary trees: T1, with millions of nodes, and T2, with
  * hundreds of nodes. Create an algorithm to decide if T2 is a subtree of T1.
- * 
- * A tree T2 is a subtree of T1 if there exists a node n in T1 such that the subtree of
- * n is identical to T2. That is, if you cut off the tree at node n, the two trees would
- * be identical.
  */
 namespace Cracking.Chapter04
 {
+    /*
+     * A tree T2 is a subtree of T1 if there exists a node n in T1 such that the subtree of
+     * n is identical to T2. That is, if you cut off the tree at node n, the two trees would
+     * be identical.
+     */
     class _08
     {
         // https://leetcode.com/problems/same-tree/
@@ -42,6 +43,13 @@ namespace Cracking.Chapter04
                 return false;
             }
 
+            // null tree is always a subtree
+            if (t2 == null)
+            {
+                return true;
+            }
+
+            // Only bother to check if the two "root" nodes match
             if (t1.Value == t2.Value)
             {
                 if (AreEqualTrees(t1, t2))
@@ -51,16 +59,6 @@ namespace Cracking.Chapter04
             }
 
             return SubTree(t1.Left, t2) || SubTree(t1.Right, t2);
-        }
-
-        public static bool ContainsTree(TreeNode t1, TreeNode t2)
-        {
-            // null tree is always a subtree
-            if (t2 == null)
-            {
-                return true;
-            }
-            return SubTree(t1, t2);
         }
     }
 

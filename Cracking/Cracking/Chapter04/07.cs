@@ -49,11 +49,13 @@ namespace Cracking.Chapter04
             bool inLeft = IsInSubtree(root.Left, x, y);
             bool inRight = IsInSubtree(root.Right, x, y);
 
+            // Case 3
             if (inLeft && inRight)
             {
                 return root;
             }
-            // We must first check if the current node is a node we're looking for or else it will get missed
+
+            // Case 4: We must first check if the current node is a node we're looking for or else it will get missed
             if (root == x || root == y)
             {
                 if (IsInSubtree(root.Left, x, y) || IsInSubtree(root.Right, x, y))
@@ -61,13 +63,19 @@ namespace Cracking.Chapter04
                     return root;
                 }
             }
+
+            // Case 1
             if (inLeft && !inRight){
                 return FindCommonAncestor(root.Left, x, y);
             }
+
+            // Case 2
             if (inRight && !inLeft)
             {
                 return FindCommonAncestor(root.Right, x, y);
             }
+
+            // No solution
             return null;
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 /*
  * You have two numbers represented by a linked list, where each node contains a
- * single digit. The digits are stored in reverse order, such that the Ts digit is at the
+ * single digit. The digits are stored in reverse order, such that the 1's digit is at the
  * head of the list. Write a function that adds the two numbers and returns the sum
  * as a linked list.
  * EXAMPLE
@@ -44,7 +44,7 @@ namespace Cracking.Chapter02
                     newNode.value = l1.value + carry;
                     l1 = l1.next;
                 }
-                else // add both numbers and go to next node
+                else // add both numbers (with any possible carry) and go to next node
                 {
                     newNode.value = l1.value + l2.value + carry;
                     l1 = l1.next;
@@ -72,7 +72,10 @@ namespace Cracking.Chapter02
             return headNode.next;
         }
 
-        // Stack can be used to reverse a linked list
+        /*
+         * If we were to be given the question such that the most significant number is in front of the list, then
+         * we can simply use a stack to reverse the list and then apply the previous concept.
+         */
         public static Node AddLinkedListForward(Node l1, Node l2)
         {
             Stack<int> stack1 = new Stack<int>();
