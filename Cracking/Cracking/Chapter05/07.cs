@@ -91,5 +91,23 @@ namespace Cracking.Chapter05
             List<int> list = new List<int> { 0, 1, 2, 4, 5 };
             Assert.AreEqual(3, _07.findMissingNumber(list));
         }
+
+        [TestMethod]
+        public void TestRandom()
+        {
+            Random r = new Random();
+
+            for (int i = 0; i < 10000; i++)
+            {
+                int listSize = r.Next(2, Int32.MaxValue - 1) + 1;
+                List<int> list = Enumerable.Range(0, listSize).ToList();
+
+                int placeToRemove = r.Next(1, listSize - 1);
+                int removedNum = list[placeToRemove];
+                list.RemoveAt(placeToRemove);
+
+                Assert.AreEqual(removedNum, _07.findMissingNumber(list));
+            }
+        }
     }
 }
