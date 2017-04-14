@@ -94,6 +94,18 @@
     <Compile Include="Chapter05\06.cs" />
     <Compile Include="Chapter05\07.cs" />
     <Compile Include="Chapter05\08.cs" />
+    <Compile Include="Chapter09\01.cs" />
+    <Compile Include="Chapter09\02.cs" />
+    <Compile Include="Chapter09\03.cs" />
+    <Compile Include="Chapter09\04.cs" />
+    <Compile Include="Chapter09\05.cs" />
+    <Compile Include="Chapter09\06.cs" />
+    <Compile Include="Chapter09\07.cs" />
+    <Compile Include="Chapter09\08.cs" />
+    <Compile Include="Chapter09\09.cs" />
+    <Compile Include="Chapter09\10.cs" />
+    <Compile Include="Chapter09\11.cs" />
+    <Compile Include="Chapter09\Fib.cs" />
     <Compile Include="Chapter11\01.cs" />
     <Compile Include="Chapter11\02.cs" />
     <Compile Include="Chapter11\03.cs" />
@@ -113,7 +125,6 @@
     <Folder Include="Chapter06\" />
     <Folder Include="Chapter07\" />
     <Folder Include="Chapter08\" />
-    <Folder Include="Chapter09\" />
     <Folder Include="Chapter10\" />
     <Folder Include="Chapter12\" />
     <Folder Include="Chapter13\" />

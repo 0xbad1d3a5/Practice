@@ -40,6 +40,22 @@ namespace Cracking.Chapter05
             return result;
         }
 
+        public static void setBit(ref int x, int pos, int val){
+
+            int mask;
+
+            if (val == 0)
+            {
+                mask = ~(1 << pos);
+                x = x & mask;
+            }
+            else
+            {
+                mask = 1 << pos;
+                x = x | mask;
+            }
+        }
+
         public static int findMissingNumber(List<int> list)
         {
             int result = 0;
@@ -56,22 +72,30 @@ namespace Cracking.Chapter05
 
                 if (zeroOneCount[1] >= zeroOneCount[0])
                 {
-                    result = result << 1;
+                    setBit(ref result, i, 0);
                 }
                 else
                 {
-                    result = (result << 1) | 1;
+                    setBit(ref result, i, 1);
                 }
 
+                // Add statements here are not technically a access - just imagine if the int was
+                // wrapped in a class - you can still access the reference but not the int itself
                 for (int k = 0; k < list.Count; k++)
                 {
-                    if (zeroOneCount[1] >= zeroOneCount[0] && getBit(list, k, i) == 0)
+                    if (zeroOneCount[1] >= zeroOneCount[0])
                     {
-                        newList.Add(list[k]);
+                        if (getBit(list, k, i) == 0)
+                        {
+                            newList.Add(list[k]);
+                        }
                     }
-                    else if (getBit(list, k, i) == 1)
+                    else
                     {
-                        newList.Add(list[k]);
+                        if (getBit(list, k, i) == 1)
+                        {
+                            newList.Add(list[k]);
+                        }
                     }
                 }
 
@@ -99,14 +123,15 @@ namespace Cracking.Chapter05
 
             for (int i = 0; i < 10000; i++)
             {
-                int listSize = r.Next(2, Int32.MaxValue - 1) + 1;
+                int listSize = r.Next(2, 10000) + 1;
                 List<int> list = Enumerable.Range(0, listSize).ToList();
 
                 int placeToRemove = r.Next(1, listSize - 1);
                 int removedNum = list[placeToRemove];
                 list.RemoveAt(placeToRemove);
+                int missingNum = _07.findMissingNumber(list);
 
-                Assert.AreEqual(removedNum, _07.findMissingNumber(list));
+                Assert.AreEqual(removedNum, missingNum);
             }
         }
     }
