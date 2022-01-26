@@ -222,7 +222,7 @@ namespace Cracking.Misc
         {
             Assert.AreEqual(MonthSeparation.IslessThan, (new Date(1, 1, 2000)).howFarApart(new Date(29, 2, 2000)));
             Assert.AreEqual(MonthSeparation.IslessThan, (new Date(15, 1, 2000)).howFarApart(new Date(16, 2, 2000)));
-            Assert.AreEqual(MonthSeparation.IslessThan, (new Date(29, 1, 2000)).howFarApart(new Date(29, 2, 2000)));
+            Assert.AreEqual(MonthSeparation.IsEqual, (new Date(29, 1, 2000)).howFarApart(new Date(29, 2, 2000)));
             Assert.AreEqual(MonthSeparation.IslessThan, (new Date(28, 1, 2000)).howFarApart(new Date(29, 2, 2000)));
             Assert.AreEqual(MonthSeparation.IslessThan, (new Date(1, 1, 2000)).howFarApart(new Date(29, 2, 2000)));
         }
@@ -230,7 +230,7 @@ namespace Cracking.Misc
         [TestMethod]
         public void TestMethod3()
         {
-            Assert.AreEqual(MonthSeparation.IsMoreThan, (new Date(1, 1, 2000)).howFarApart(new Date(29, 2, 2000)));
+            // Assert.AreEqual(MonthSeparation.IsMoreThan, (new Date(1, 1, 2000)).howFarApart(new Date(29, 2, 2000)));
         }
     }
 }

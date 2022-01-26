@@ -6,67 +6,73 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 /*
- * Given two strings, write a method to decide if one is a permutation of the other.
+ * Write a method to replace all spaces in a string with '%20'. You may assume that
+ * the string has sufficient space at the end of the string to hold the additional
+ * characters, and that you are given the "true" length of the string. (Note: if imple-
+ * menting in Java, please use a character array so that you can perform this opera-
+ * tion in place.)
+ *
+ * EXAMPLE
+ * Input: "Mr John Smith    "
+ * Output: "Mr%20Dohn%20Smith"
  */
 namespace Cracking.Chapter01
 {
     class _03
     {
-        /* IMPORTANT QUESTIONS TO ASK:
+        /*
+         * Instead of starting from the beginning of the string, move the pointer to the
+         * end of the character array and start copying from the end of the string, replacing
+         * ' ' with '%20' when you encounter a space.
          * 
-         * What character encoding?
-         * Is it case sensitive?
-         * Does whitespace matter?
-         * 
-         * This solution simply builds two dictionaries then checks if the dictionaries
-         * are equal.
-         * 
-         * Alternative solution: sort the strings and check if they are equal.
+         * Note: this particular implementation does not allow spaces at the end
          */
-        public static bool ArePermutation(string str1, string str2)
+        public static char[] ReplaceSpacesWithPercentTwenty(char[] charArray)
         {
-            Dictionary<char, int> d1 = BuildDictionary(str1);
-            Dictionary<char, int> d2 = BuildDictionary(str2);
+            int lastChar = charArray.Length - 1;
+            int readingPointer = lastChar;
+            int writingPointer = lastChar;
 
-            return AreEqualDictionaries(d1, d2);
-        }
-
-        private static Dictionary<char, int> BuildDictionary(string str)
-        {
-            Dictionary<char, int> d = new Dictionary<char, int>();
-
-            foreach (char c in str)
+            while (charArray[readingPointer] == ' ')
             {
-                if (d.ContainsKey(c))
+                readingPointer--;
+            }
+
+            while (readingPointer >= 0)
+            {
+                if (charArray[readingPointer] == ' ')
                 {
-                    d[c]++;
+                    charArray[writingPointer] = '0'; writingPointer--;
+                    charArray[writingPointer] = '2'; writingPointer--;
+                    charArray[writingPointer] = '%'; writingPointer--;
                 }
                 else
                 {
-                    d[c] = 1;
+                    charArray[writingPointer] = charArray[readingPointer]; writingPointer--;
                 }
+                readingPointer--;
             }
 
-            return d;
+            return charArray;
         }
 
-        public static bool AreEqualDictionaries(Dictionary<char, int> d1, Dictionary<char, int> d2)
+        public static char[] StringToCharArrayWithSpace(string str)
         {
-            
-            if (d1.Count != d2.Count)
+            int spaceCount = str.Count(c => c == ' ');
+            int arraySize = str.Length - spaceCount + (spaceCount * 3);
+            char[] charArray = new char[arraySize];
+
+            int charPos = 0;
+            for (charPos = 0; charPos < str.Length; charPos++)
             {
-                return false;
+                charArray[charPos] = str[charPos];
+            }
+            for (; charPos < charArray.Length; charPos++)
+            {
+                charArray[charPos] = ' ';
             }
 
-            foreach (char k in d1.Keys)
-            {
-                if (d1[k] != d2[k])
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return charArray;
         }
     }
 
@@ -75,10 +81,10 @@ namespace Cracking.Chapter01
     {
 
         [TestMethod]
-        public void test(){
-            Assert.IsTrue(_03.ArePermutation("abc", "cba"));
-            Assert.IsTrue(_03.ArePermutation("aabbcc", "ccbbaa"));
-            Assert.IsFalse(_03.ArePermutation("abc", "aabc"));
+        public void Test()
+        {
+            var charArray = _03.StringToCharArrayWithSpace("Mr John Smith");
+            var result = _03.ReplaceSpacesWithPercentTwenty(charArray);
         }
     }
 }

@@ -132,7 +132,6 @@ namespace Cracking.Chapter02
         {
             Node head = new Node(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
-            int x;
             Assert.AreEqual(9, _02.nthToLastElementIterative(head, 1).value);
             Assert.AreEqual(6, _02.nthToLastElementIterative(head, 4).value);
         }

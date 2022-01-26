@@ -45,6 +45,11 @@ namespace BitFlip
             }
             return Equals(obj as FlipResult);
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 
     public class BitFlip

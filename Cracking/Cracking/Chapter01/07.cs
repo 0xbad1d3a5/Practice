@@ -6,51 +6,36 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 /*
- * Write an algorithm such that if an element in an MxN matrix is 0, its entire row
- * and column are set to 0.
+ * Given an image represented by an NxN matrix, where each pixel in the image is
+ * 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in
+ * place?
  */
 namespace Cracking.Chapter01
 {
     class _07
     {
-        /*
-         * Note that you need at least two passes for this problem. If you attempt to do it in only one pass,
-         * it will not work as future visits to a position that was previously set to zero will unintentially
-         * set cells that should not be 0 to 0.
-         * 
-         * Solution is thus:
-         * 1) Loop through the matrix, keep track of what columns and rows should be zero-ized in two separate arrays
-         * 2) Loop through the matrix again, this time setting matrix[x, y] to be 0 if rows[x] == 0 || column[y] == 0
-         */
-        public static void SetMatrixRowColZero(int[,] matrix)
+        // https://leetcode.com/problems/rotate-image/
+        // Optimization only works if matrix is NxN
+        public static void RotateMatrix(int[,] matrix, int start, int end)
         {
-            int[] rows = new int[matrix.GetLength(0)];
-            int[] cols = new int[matrix.GetLength(1)];
-
-            // Loop through the matrix and find which columns and rows have zeros
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            if (start > end)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    if (matrix[i, j] == 0)
-                    {
-                        rows[i] = 1;
-                        cols[j] = 1;
-                    }
-                }
+                return;
             }
 
-            // Go through the array again to set the correct elements
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            end = end - 1;
+            int offset = 0; // Careful here, we need this variable (and can't do "end - i") because the end also has to one-by-one meet start
+            for (int i = start; i < end; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    if (rows[i] == 1 || cols[j] == 1)
-                    {
-                        matrix[i, j] = 0;
-                    }
-                }
+                int temp = matrix[start, i]; // Save top-left corner
+                matrix[start, i] = matrix[end - offset, start]; // Move bottom-left to top-left
+                matrix[end - offset, start] = matrix[end, end - offset]; // Move bottom-right to bottom-left
+                matrix[end, end - offset] = matrix[i, end]; // Move top-right to bottom-right
+                matrix[i, end] = temp; // Set top right to saved top-left
+                offset++; // Increment to move onto next position
             }
+
+            RotateMatrix(matrix, start + 1, end);
         }
 
         public static void PrintMatrix(int[,] matrix)
@@ -71,17 +56,17 @@ namespace Cracking.Chapter01
     public class Tests_01_07
     {
         [TestMethod]
-        public void Test(){
-
-            int[,] matrix = new int[,] { { 1, 2, 3, 4 }, { 2, 3, 0, 5 }, { 3, 4, 5, 6 }, { 4, 5, 6, 7 } };
-            int[,] matrix1 = new int[,] { { 1, 2, 3, 4, 5 }, { 2, 3, 4, 5, 6 }, { 3, 4, 5, 6, 7 }, { 4, 5, 6, 7, 8 }, { 5, 6, 7, 8, 9 }, {6, 7, 8, 9, 0} };
+        public void Test()
+        {
+            int[,] matrix = new int[,] { { 1, 2, 3, 4 }, { 2, 3, 4, 5 }, { 3, 4, 5, 6 }, { 4, 5, 6, 7 } };
+            int[,] matrix1 = new int[,] { { 1, 2, 3, 4, 5 }, { 2, 3, 4, 5, 6 }, { 3, 4, 5, 6, 7 }, { 4, 5, 6, 7, 8 }, { 5, 6, 7, 8, 9 } };
 
             _07.PrintMatrix(matrix);
-            _07.SetMatrixRowColZero(matrix);
+            _07.RotateMatrix(matrix, 0, matrix.GetLength(0));
             _07.PrintMatrix(matrix);
 
             _07.PrintMatrix(matrix1);
-            _07.SetMatrixRowColZero(matrix1);
+            _07.RotateMatrix(matrix1, 0, matrix1.GetLength(0));
             _07.PrintMatrix(matrix1);
         }
     }

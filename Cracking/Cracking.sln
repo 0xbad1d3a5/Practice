@@ -1,22 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cracking", "Cracking\Cracking.csproj", "{8837678E-FB82-4D1C-8282-2C8D8BCF1007}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cracking", "Cracking\Cracking.csproj", "{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8837678E-FB82-4D1C-8282-2C8D8BCF1007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8837678E-FB82-4D1C-8282-2C8D8BCF1007}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8837678E-FB82-4D1C-8282-2C8D8BCF1007}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8837678E-FB82-4D1C-8282-2C8D8BCF1007}.Release|Any CPU.Build.0 = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Debug|x64.Build.0 = Debug|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Debug|x86.Build.0 = Debug|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Release|x64.ActiveCfg = Release|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Release|x64.Build.0 = Release|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Release|x86.ActiveCfg = Release|Any CPU
+		{7BFFE5DA-C77C-47B7-920C-21AD0F54B6CA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
