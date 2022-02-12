@@ -25,7 +25,7 @@ namespace Cracking.Chapter01
 {
     class _04
     {
-        public static bool isPalindromePermutation(string input) 
+        public static bool IsPalindromePermutation(string input) 
         {
             string inputLower = input.ToLower();
 
@@ -59,7 +59,7 @@ namespace Cracking.Chapter01
             return numOddCharCounts == 0 || numOddCharCounts == 1;
         }
 
-        public static bool isPalindromePermutationVectorBit(string input)
+        public static bool IsPalindromePermutationVectorBit(string input)
         {
             string inputLower = input.ToLower();
 
@@ -103,28 +103,28 @@ namespace Cracking.Chapter01
         [TestMethod]
         public void TestTrue()
         {
-            Assert.IsTrue(_04.isPalindromePermutation("Tact Coa"));
-            Assert.IsTrue(_04.isPalindromePermutation("a a"));
-            Assert.IsTrue(_04.isPalindromePermutation("a"));
-            Assert.IsTrue(_04.isPalindromePermutation("aab ba"));
-            Assert.IsTrue(_04.isPalindromePermutation(""));
+            Assert.IsTrue(_04.IsPalindromePermutation("Tact Coa"));
+            Assert.IsTrue(_04.IsPalindromePermutation("a a"));
+            Assert.IsTrue(_04.IsPalindromePermutation("a"));
+            Assert.IsTrue(_04.IsPalindromePermutation("aab ba"));
+            Assert.IsTrue(_04.IsPalindromePermutation(""));
 
-            Assert.IsTrue(_04.isPalindromePermutationVectorBit("Tact Coa"));
-            Assert.IsTrue(_04.isPalindromePermutationVectorBit("a a"));
-            Assert.IsTrue(_04.isPalindromePermutationVectorBit("a"));
-            Assert.IsTrue(_04.isPalindromePermutationVectorBit("aab ba"));
-            Assert.IsTrue(_04.isPalindromePermutationVectorBit(""));
+            Assert.IsTrue(_04.IsPalindromePermutationVectorBit("Tact Coa"));
+            Assert.IsTrue(_04.IsPalindromePermutationVectorBit("a a"));
+            Assert.IsTrue(_04.IsPalindromePermutationVectorBit("a"));
+            Assert.IsTrue(_04.IsPalindromePermutationVectorBit("aab ba"));
+            Assert.IsTrue(_04.IsPalindromePermutationVectorBit(""));
         }
 
         
         [TestMethod]
         public void TestFalse()
         {
-            Assert.IsFalse(_04.isPalindromePermutation("abc"));
-            Assert.IsFalse(_04.isPalindromePermutation("ab c"));
+            Assert.IsFalse(_04.IsPalindromePermutation("abc"));
+            Assert.IsFalse(_04.IsPalindromePermutation("ab c"));
 
-            Assert.IsFalse(_04.isPalindromePermutationVectorBit("abc"));
-            Assert.IsFalse(_04.isPalindromePermutationVectorBit("ab c"));
+            Assert.IsFalse(_04.IsPalindromePermutationVectorBit("abc"));
+            Assert.IsFalse(_04.IsPalindromePermutationVectorBit("ab c"));
         }
     }
 }

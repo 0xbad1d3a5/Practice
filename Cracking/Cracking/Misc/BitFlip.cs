@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Collections.ObjectModel;
 
-namespace BitFlip
+namespace Cracking.Misc
 {
     public class FlipResult : IEquatable<FlipResult>
     {
