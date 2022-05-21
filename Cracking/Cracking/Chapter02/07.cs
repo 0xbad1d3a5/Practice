@@ -6,95 +6,129 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * Implement a function to check if a linked list is a palindrome.
+ * Given two (singly) linked lists, determine if the two lists intersect. Return the intersecting node.
+ * Note that the intersection is defined based on reference, not value. That is, if the kth node of the first linked list
+ * is the exact same node (by reference) as the jth node of the second linked list, then they are intersecting.
  */
 namespace Cracking.Chapter02
 {
     class _07
     {
-        public static bool CheckLinkedListPalindromeUsingStack(Node head)
+       /*
+        * - Can determine is there's an intersection because last node will be the same
+        * - To find the intersecting node:
+        *   - If linked lists are the same length, then can just traverse them at the same time
+        *   - If the linked lists aren't the same length, we can simply use the previous step
+        *     (determining if there's a intersection) to get the length of the nodes, and
+        *     chop off from there
+        */
+        public static ListNode IsIntersectingLinear(ListNode headA, ListNode headB)
         {
-            Stack<int> stack = new Stack<int>();
-            Node ptr = head;
+            if (headA == null || headB == null)
+            {
+                return null;
+            }
 
+            ListNode endHeadA, endHeadB;
+            int lengthA, lengthB;
+            GetLastNodeAndLength(headA, out endHeadA, out lengthA);
+            GetLastNodeAndLength(headB, out endHeadB, out lengthB);
+            
+            if (endHeadA != endHeadB)
+            {
+                return null;
+            }
+
+            ListNode shorter = lengthA < lengthB ? headA : headB;
+            ListNode longer = lengthA < lengthB ? headB : headA;
+
+            int numToSkipInLonger = Math.Abs(lengthA - lengthB);
+            while (numToSkipInLonger > 0 && longer != null)
+            {
+                longer = longer.next;
+                numToSkipInLonger--;
+            }
+
+            while (shorter != longer)
+            {
+                shorter = shorter.next;
+                longer = longer.next;
+            }
+
+            return longer;
+        }
+
+        public static void GetLastNodeAndLength(ListNode node, out ListNode resultNode, out int length)
+        {
+            resultNode = node;
+            length = 1;
+
+            while (resultNode.next != null)
+            {
+                resultNode = resultNode.next;
+                length++;
+            }            
+        }
+
+       /*
+        * NOTES:
+        * - We can point the tail of one of the linked lists to its head. Then all we need to do is detect whether
+        *   we have a cycle, then if we have a cycle find its beginning.
+        *   Beginning finding algorithm: https://stackoverflow.com/questions/2936213/how-does-finding-a-cycle-start-node-in-a-cycle-linked-list-work
+        * - Otherwise, if we cannot mutalate the list, we need to check every single node in one list with
+        *   every other node in the other list.
+        * - Or, use a dictionary
+        */
+        public static ListNode IsIntersectingCircular(ListNode headA, ListNode headB)
+        {
+            ListNode end = null;
+            ListNode ptr = headB;
             while (ptr != null)
             {
-                stack.Push(ptr.value);
+                end = ptr;
                 ptr = ptr.next;
             }
 
-            ptr = head;
-            int numToCompare = stack.Count / 2;
-            for (int i = 0; i < numToCompare; i++)
+            end.next = headB;
+            
+            ListNode ptr1 = headA;
+            ListNode ptr2 = headA;
+            bool hasCycle = false;
+
+            while (ptr1 != null && ptr2 != null)
             {
-                if (stack.Pop() != ptr.value)
-                {
-                    return false;
+                if (ptr2.next == null)
+                { 
+                    break;
                 }
-                ptr = ptr.next;
+
+                ptr1 = ptr1.next;
+                ptr2 = ptr2.next.next;
+
+                if (ptr1 == ptr2)
+                {
+                    hasCycle = true;
+                    break;
+                }
             }
 
-            return true;
-        }
-
-        /* 
-         * For recursive implementation, first we should consider the base cases:
-         * 0: obvious
-         * 1: ( A ( B ) A ) - B does not need to be compared, so A goes with B.next
-         * 2: ( A ( B1 B2 ) A ) - Though this doesn't seem like a base case (why not use 0)? It is.
-         * The reason is that if we use 0, instead of comparing B1 B2 we will compare:
-         * n = A, length = 4
-         * n = B1, length = 2
-         * n = B2, length = 0 -> return value is B2.next which is A
-         * -> n = B1 will end up getting compared to return value B2.next A
-         * 
-         * The next key thing is that the input is the first half of the list, and the return value is the second half.
-         * Now you can compare (due to recursive calls) the 0 with n, 1 with n-1, 2 with n-2, etc...
-         * 
-         * Since we use the return value to get the second half of the list, we need to wrap the return node in a class
-         * with a boolean result so that we can give an answer at the end.
-         */ 
-        public static CheckLinkedListPalindromeRecursiveHelper CheckLinkedListPalindromeRecursive(Node n, int length)
-        {
-            if (length == 0 || n == null)
+            if (!hasCycle)
             {
-                return new CheckLinkedListPalindromeRecursiveHelper(null, true);
+                end.next = null;
+                return null;
             }
-            if (length == 1)
+
+            ptr1 = headA;
+            
+            while (ptr1 != ptr2)
             {
-                return new CheckLinkedListPalindromeRecursiveHelper(n.next, true);
-            }
-            if (length == 2)
-            {
-                return new CheckLinkedListPalindromeRecursiveHelper(n.next.next, n.value == n.next.value);
+                ptr1 = ptr1.next;
+                ptr2 = ptr2.next;
             }
 
-            CheckLinkedListPalindromeRecursiveHelper res = CheckLinkedListPalindromeRecursive(n.next, length - 2);
+            end.next = null;
 
-            if (!res.isPalindrome)
-            {
-                return res;
-            }
-            else if (n.value != res.node.value)
-            {
-                res.isPalindrome = false;
-                return res;
-            }
-
-            res.node = res.node.next;
-            return res;
-        }
-    }
-
-    class CheckLinkedListPalindromeRecursiveHelper
-    {
-        public Node node { get; set; }
-        public bool isPalindrome { get; set; }
-
-        public CheckLinkedListPalindromeRecursiveHelper(Node node, bool isPalindrome)
-        {
-            this.node = node;
-            this.isPalindrome = isPalindrome;
+            return ptr1;
         }
     }
 
@@ -104,44 +138,56 @@ namespace Cracking.Chapter02
         [TestMethod]
         public void Test()
         {
-            Node A = new Node(1);
-            Node B = new Node(2);
-            Node C = new Node(3);
-            Node D = new Node(3);
-            Node E = new Node(2);
-            Node F = new Node(1);
+            ListNode listA = CreateLinkedList(new List<int> { 4, 1, 8, 4, 5 });
+            ListNode listB = CreateLinkedList(new List<int> { 5, 6, 1, 8, 4, 5 });
 
-            A.next = B;
-            B.next = C;
-            C.next = D;
-            D.next = E;
-            E.next = F;
+            ListNode tempA = listA;
+            for (int i = 0; i < 2; i++)
+            {
+                tempA = tempA.next;
+            }
 
-            Assert.AreEqual(true, _07.CheckLinkedListPalindromeUsingStack(A));
-            Assert.AreEqual(true, _07.CheckLinkedListPalindromeRecursive(A, 6).isPalindrome);
+            ListNode tempB = listB;
+            for (int i = 0; i < 2; i++)
+            {
+                tempB = tempB.next;
+            }
+            tempB.next = tempA;
+
+            _07.IsIntersectingCircular(listA, listB);
+            _07.IsIntersectingLinear(listA, listB);
         }
 
         [TestMethod]
         public void Test1()
         {
-            Node A = new Node(1);
+            ListNode listA = CreateLinkedList(new List<int> { 2, 6, 4 });
+            ListNode listB = CreateLinkedList(new List<int> { 1, 5 });
 
-            Assert.AreEqual(true, _07.CheckLinkedListPalindromeUsingStack(A));
-            Assert.AreEqual(true, _07.CheckLinkedListPalindromeRecursive(A, 1).isPalindrome);
+            _07.IsIntersectingCircular(listA, listB);
+            _07.IsIntersectingLinear(listA, listB);
         }
 
-        [TestMethod]
-        public void Test2()
+        public ListNode CreateLinkedList(List<int> nums)
         {
-            Node A = new Node(1);
-            Node B = new Node(2);
-            Node C = new Node(1);
+            ListNode start = null;
+            ListNode curr = null;
 
-            A.next = B;
-            B.next = C;
+            foreach (int i in nums)
+            {
+                if (start == null)
+                {
+                    start = new ListNode(i);
+                    curr = start;
+                }
+                else {
+                    ListNode temp = new ListNode(i);
+                    curr.next = temp;
+                    curr = curr.next;
+                }
+            }
 
-            Assert.AreEqual(true, _07.CheckLinkedListPalindromeUsingStack(A));
-            Assert.AreEqual(true, _07.CheckLinkedListPalindromeRecursive(A, 3).isPalindrome);
+            return start;
         }
     }
 }

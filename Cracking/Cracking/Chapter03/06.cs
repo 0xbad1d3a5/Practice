@@ -6,52 +6,126 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * Write a program to sort a stack in ascending order (with biggest items on top).
- * You may use at most one additional stack to hold items, but you may not copy
- * the elements into any other data structure (such as an array). The stack supports
- * the following operations: push, pop, peek, and isEmpty.
+ * An animal shelter holds only dogs and cats, and operates on a strictly "first in,
+ * first out" basis. People must adopt either the "oldest" (based on arrival time) of
+ * all animals at the shelter, or they can select whether they would prefer a dog or
+ * a cat (and will receive the oldest animal of that type). They cannot select which
+ * specific animal they would like. Create the data structures to maintain this system
+ * and implement operations such as enqueue, dequeueAny, dequeueDog and
+ * dequeueCat. You may use the built-in LinkedList data structure.
  */
 namespace Cracking.Chapter03
 {
-    class _06
+    /*
+     * Does not support multi-threaded applications
+     */
+    public class AnimalShelter
     {
-        public static void sortStack(Stack<int> stack)
+        int arrivalTime = 0;
+        private LinkedList<Dog> listDog = new LinkedList<Dog>();
+        private LinkedList<Cat> listCat = new LinkedList<Cat>();
+
+        public void enqueue(Animal animal)
         {
-            if (stack.Count == 0 || stack.Count == 1)
-            {
-                return;
-            }
+            arrivalTime++;
+            animal.ArrivalTime = arrivalTime;
 
-            Stack<int> tempStack = new Stack<int>();
+            if (animal is Cat)
+            {
+                listCat.AddLast((Cat)animal);
+            }
+            else if (animal is Dog)
+            {
+                listDog.AddLast((Dog)animal);
+            }
+            else
+            {
+                throw new InvalidCastException();
+            }
+        }
+
+        public Animal dequeueAny()
+        {
+            Animal animal;
             
-            while (true)
+            if (listDog.Count == 0 && listCat.Count == 0)
             {
-                int node = stack.Pop();
-
-                int count = stack.Count;
-                for (int i = 0; i < count; i++)
+                return null;
+            }
+            else if (listDog.Count == 0)
+            {
+                animal = listCat.First();
+                listCat.RemoveFirst();
+            }
+            else if (listCat.Count == 0)
+            {
+                animal = listDog.First();
+                listDog.RemoveFirst();
+            }
+            else
+            {
+                if (listCat.First().ArrivalTime < listDog.First().ArrivalTime)
                 {
-                    tempStack.Push(stack.Pop());
+                    animal = listCat.First();
+                    listCat.RemoveFirst();
                 }
-
-                // Potential source of bug (infinite loop) - may never stop if only use '<'
-                while (tempStack.Count > 0 && tempStack.Peek() <= node)
+                else
                 {
-                    stack.Push(tempStack.Pop());
-                }
-                stack.Push(node);
-
-                if (tempStack.Count == 0)
-                {
-                    break;
-                }
-
-                count = tempStack.Count;
-                for (int i = 0; i < count; i++)
-                {
-                    stack.Push(tempStack.Pop());
+                    animal = listDog.First();
+                    listDog.RemoveFirst();
                 }
             }
+
+            return animal;
+        }
+
+        public Animal dequeueDog()
+        {
+            if (listDog.Count == 0)
+            {
+                return null;
+            }
+
+            Animal animal = listDog.First();
+            listDog.RemoveFirst();
+            return animal;
+        }
+
+        public Animal dequeueCat()
+        {
+            if (listCat.Count == 0)
+            {
+                return null;
+            }
+
+            Animal animal = listCat.First();
+            listCat.RemoveFirst();
+            return animal;
+        }
+    }
+
+    public class Cat : Animal
+    {
+        public Cat(string name) : base(name)
+        {
+        }
+    }
+
+    public class Dog : Animal
+    {
+        public Dog(string name) : base(name)
+        {
+        }
+    }
+
+    public class Animal
+    {
+        public int ArrivalTime { get; set; }
+        public string Name { get; private set; }
+
+        public Animal(string name)
+        {
+            this.Name = name;
         }
     }
 
@@ -61,28 +135,29 @@ namespace Cracking.Chapter03
         [TestMethod]
         public void Test()
         {
-            var stack = new Stack<int>(new[] { 6, 5, 4, 3, 2, 1 });
-            var before = stack.ToArray();
-            _06.sortStack(stack);
-            var after = stack.ToArray();
-        }
+            AnimalShelter animalShelter = new AnimalShelter();
+            animalShelter.enqueue(new Dog("D1"));
+            animalShelter.enqueue(new Dog("D2"));
+            animalShelter.enqueue(new Dog("D3"));
+            animalShelter.enqueue(new Cat("C1"));
+            animalShelter.enqueue(new Dog("D4"));
+            animalShelter.enqueue(new Cat("C2"));
+            animalShelter.enqueue(new Dog("D5"));
+            animalShelter.enqueue(new Cat("C3"));
+            animalShelter.enqueue(new Dog("D6"));
 
-        [TestMethod]
-        public void Test1()
-        {
-            var stack = new Stack<int>(new[] { 6, 6, 6, 6, 5, 4, 3, 2, 1, 1, 1 });
-            var before = stack.ToArray();
-            _06.sortStack(stack);
-            var after = stack.ToArray();
-        }
+            Assert.AreEqual("D1", animalShelter.dequeueAny().Name);
+            Assert.AreEqual("C1", animalShelter.dequeueCat().Name);
+            Assert.AreEqual("D2", animalShelter.dequeueAny().Name);
+            Assert.AreEqual("D3", animalShelter.dequeueDog().Name);
 
-        [TestMethod]
-        public void Test2()
-        {
-            var stack = new Stack<int>(new[] { 6, 6, 8, 6, 6, 5, 4, 6, 3, 1, 2, 1, 1, 1 });
-            var before = stack.ToArray();
-            _06.sortStack(stack);
-            var after = stack.ToArray();
+            Assert.AreEqual("D4", animalShelter.dequeueAny().Name);
+            Assert.AreEqual("C2", animalShelter.dequeueAny().Name);
+            Assert.AreEqual("D5", animalShelter.dequeueAny().Name);
+            Assert.AreEqual("C3", animalShelter.dequeueAny().Name);
+            Assert.AreEqual("D6", animalShelter.dequeueAny().Name);
+
+            Assert.AreEqual(null, animalShelter.dequeueAny());
         }
     }
 }

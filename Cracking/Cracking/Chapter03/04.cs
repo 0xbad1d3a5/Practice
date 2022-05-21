@@ -6,87 +6,57 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * In the classic problem of the Towers of Hanoi, you have 3 towers and N disks of
- * different sizes which can slide onto any tower. The puzzle starts with disks sorted
- * in ascending order of size from top to bottom (i.e., each disk sits on top of an
- * even larger one). You have the following constraints:
- * (1) Only one disk can be moved at a time.
- * (2) A disk is slid off the top of one tower onto the next tower.
- * (3) A disk can only be placed on top of a larger disk.
- * Write a program to move the disks from the first tower to the last using stacks.
+ * Implement a MyQueue class which implements a queue using two stacks.
  */
 namespace Cracking.Chapter03
 {
-    public static class _04
+    public class MyQueue<T>
     {
-        public static void hanoi(char[] discs, int origin, int spare, int dest)
+        Stack<T> stack1 = new Stack<T>();
+        Stack<T> stack2 = new Stack<T>();
+
+        public void enqueue(T val)
         {
-            if (discs.Length == 0)
+            int count = stack2.Count;
+            for (int i = 0; i < count; i++)
             {
-                return;
+                stack1.Push(stack2.Pop());
             }
 
-            hanoi(discs.Take(discs.Length - 1).ToArray(), origin, dest, spare);
-
-            System.Console.WriteLine(string.Format("Moving {0} from {1} to {2}", discs[discs.Length - 1], origin, dest));
-
-            hanoi(discs.Take(discs.Length - 1).ToArray(), spare, origin, dest);
-        }
-    }
-
-    public class Tower
-    {
-        private Stack<int> stack = new Stack<int>();
-
-        public Tower()
-        {
+            stack1.Push(val);
         }
 
-        public Tower(Stack<int> stack)
+        public T dequeue()
         {
-            this.stack = stack;
-        }
-
-        public void addDisc(int disc)
-        {
-            stack.Push(disc);
-        }
-
-        public void moveDisc(Tower dest)
-        {
-            dest.addDisc(stack.Pop());
-        }
-
-        public void moveDiscs(int count, Tower spare, Tower dest)
-        {
-            if (count == 0)
+            int count = stack1.Count;
+            for (int i = 0; i < count; i++)
             {
-                return;
+                stack2.Push(stack1.Pop());
             }
 
-            moveDiscs(count - 1, dest, spare);
-            moveDisc(dest);
-            spare.moveDiscs(count - 1, this, dest);
+            return stack2.Pop();
         }
     }
 
     [TestClass]
-    public class Tests_03_04
+    public class Tests_03_04_old
     {
         [TestMethod]
         public void Test()
         {
-            _04.hanoi(new char[] { 'A', 'B', 'C' }, 1, 2, 3);
-        }
+            MyQueue<int> myQueue = new MyQueue<int>();
+            
+            myQueue.enqueue(1);
+            myQueue.enqueue(2);
+            myQueue.enqueue(3);
+            myQueue.enqueue(4);
+            myQueue.enqueue(5);
 
-        [TestMethod]
-        public void Test1()
-        {
-            Tower t1 = new Tower(new Stack<int>(new[] {6, 5, 4, 3, 2, 1} ));
-            Tower t2 = new Tower();
-            Tower t3 = new Tower();
-
-            t1.moveDiscs(4, t2, t3);
+            Assert.AreEqual(1, myQueue.dequeue());
+            Assert.AreEqual(2, myQueue.dequeue());
+            Assert.AreEqual(3, myQueue.dequeue());
+            Assert.AreEqual(4, myQueue.dequeue());
+            Assert.AreEqual(5, myQueue.dequeue());
         }
     }
 }

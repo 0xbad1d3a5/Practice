@@ -6,35 +6,52 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * Implement a MyQueue class which implements a queue using two stacks.
+ * Write a program to sort a stack in ascending order (with biggest items on top).
+ * You may use at most one additional stack to hold items, but you may not copy
+ * the elements into any other data structure (such as an array). The stack supports
+ * the following operations: push, pop, peek, and isEmpty.
  */
 namespace Cracking.Chapter03
 {
-    public class MyQueue<T>
+    class _05
     {
-        Stack<T> stack1 = new Stack<T>();
-        Stack<T> stack2 = new Stack<T>();
-
-        public void enqueue(T val)
+        public static void sortStack(Stack<int> stack)
         {
-            int count = stack2.Count;
-            for (int i = 0; i < count; i++)
+            if (stack.Count == 0 || stack.Count == 1)
             {
-                stack1.Push(stack2.Pop());
+                return;
             }
 
-            stack1.Push(val);
-        }
-
-        public T dequeue()
-        {
-            int count = stack1.Count;
-            for (int i = 0; i < count; i++)
+            Stack<int> tempStack = new Stack<int>();
+            
+            while (true)
             {
-                stack2.Push(stack1.Pop());
-            }
+                int node = stack.Pop();
 
-            return stack2.Pop();
+                int count = stack.Count;
+                for (int i = 0; i < count; i++)
+                {
+                    tempStack.Push(stack.Pop());
+                }
+
+                // Potential source of bug (infinite loop) - may never stop if only use '<'
+                while (tempStack.Count > 0 && tempStack.Peek() <= node)
+                {
+                    stack.Push(tempStack.Pop());
+                }
+                stack.Push(node);
+
+                if (tempStack.Count == 0)
+                {
+                    break;
+                }
+
+                count = tempStack.Count;
+                for (int i = 0; i < count; i++)
+                {
+                    stack.Push(tempStack.Pop());
+                }
+            }
         }
     }
 
@@ -44,19 +61,28 @@ namespace Cracking.Chapter03
         [TestMethod]
         public void Test()
         {
-            MyQueue<int> myQueue = new MyQueue<int>();
-            
-            myQueue.enqueue(1);
-            myQueue.enqueue(2);
-            myQueue.enqueue(3);
-            myQueue.enqueue(4);
-            myQueue.enqueue(5);
+            var stack = new Stack<int>(new[] { 6, 5, 4, 3, 2, 1 });
+            var before = stack.ToArray();
+            _05.sortStack(stack);
+            var after = stack.ToArray();
+        }
 
-            Assert.AreEqual(1, myQueue.dequeue());
-            Assert.AreEqual(2, myQueue.dequeue());
-            Assert.AreEqual(3, myQueue.dequeue());
-            Assert.AreEqual(4, myQueue.dequeue());
-            Assert.AreEqual(5, myQueue.dequeue());
+        [TestMethod]
+        public void Test1()
+        {
+            var stack = new Stack<int>(new[] { 6, 6, 6, 6, 5, 4, 3, 2, 1, 1, 1 });
+            var before = stack.ToArray();
+            _05.sortStack(stack);
+            var after = stack.ToArray();
+        }
+
+        [TestMethod]
+        public void Test2()
+        {
+            var stack = new Stack<int>(new[] { 6, 6, 8, 6, 6, 5, 4, 6, 3, 1, 2, 1, 1, 1 });
+            var before = stack.ToArray();
+            _05.sortStack(stack);
+            var after = stack.ToArray();
         }
     }
 }
